@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import BaseConverter from './utility/BaseConverter';
 
 function App() {
+  console.log(BaseConverter(16, 'CA0', 10));
   return (
     <div className="App">
       <header className="App-header">
