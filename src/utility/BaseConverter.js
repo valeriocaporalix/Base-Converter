@@ -1,5 +1,6 @@
 function BaseConverter(startBase, num, endBase) {
   let numSplitReversed = Array.from(String(num)).reverse();
+
   let decimalValues = numSplitReversed.map((el) => {
     if (el === 'A') {
       return 10;
