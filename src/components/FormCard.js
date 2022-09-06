@@ -11,11 +11,20 @@ const FormCard = () => {
     e.preventDefault();
     setResult(BaseConverter(fromBase, num, toBase));
   };
+
+  const resetHandler = () => {
+    setResult('');
+    setNum('');
+  };
   return (
     <section>
       <form onSubmit={submitHandler}>
         <label>Number:</label>
-        <input value={num} onChange={(e) => setNum(e.target.value)} required />
+        <input
+          value={num}
+          onChange={(e) => setNum(e.target.value.toUpperCase())}
+          required
+        />
         <label>From Base:</label>
         <select onChange={(e) => setFromBase(e.target.value)} defaultValue={10}>
           <option value={2}>{'2 (Binary)'}</option>
@@ -52,13 +61,16 @@ const FormCard = () => {
           <option value={15}>{'15'}</option>
           <option value={16}>{'16 (Hex)'}</option>
         </select>
-        <button type="submit">Submit</button>
-      </form>
-      <div className="result">
-        <label>Result:</label>
-        <div className="result-container">
-          <h4>{result === '' ? '...' : result}</h4>
+        <div className="btn-wrap">
+          <button type="submit">Submit</button>
+          <button type="button" onClick={() => resetHandler()}>
+            Reset
+          </button>
         </div>
+      </form>
+      <hr />
+      <div className="result-container">
+        <h4>{result === '' ? 'Result Here' : result}</h4>
       </div>
     </section>
   );
